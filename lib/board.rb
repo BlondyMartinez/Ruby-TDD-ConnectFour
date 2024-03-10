@@ -34,6 +34,6 @@ class Board
 
     def add_move(column, symbol)
         row = column_empty?(column) ? 5 : first_empty_slot(column)
-        board[row][column] = symbol
+        @board[row][column - 1] = symbol if row
     end
 end

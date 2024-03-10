@@ -42,23 +42,33 @@ describe "Board" do
     describe "#board_modification" do
         it "play on empty board" do
             board = Board.new
-            board.add_move(6, "x");
+            board.add_move(7, "x")
             expect(board.board_state).to eq([[" ", " ", " ", " ", " ", " ", " "],
                                             [" ", " ", " ", " ", " ", " ", " "],
                                             [" ", " ", " ", " ", " ", " ", " "],
                                             [" ", " ", " ", " ", " ", " ", " "],
                                             [" ", " ", " ", " ", " ", " ", " "],
                                             [" ", " ", " ", " ", " ", " ", "x"]])
+        end
 
-            
-            board.add_move(6, " ");
-            board.add_move(0, "x")
-            expect(board.board_state).to eq([[" ", " ", " ", " ", " ", " ", " "],
-                                            [" ", " ", " ", " ", " ", " ", " "],
-                                            [" ", " ", " ", " ", " ", " ", " "],
-                                            [" ", " ", " ", " ", " ", " ", " "],
-                                            [" ", " ", " ", " ", " ", " ", " "],
-                                            ["x", " ", " ", " ", " ", " ", " "]])
+        it "play a few times on an empty board" do
+            board = Board.new
+            board.add_move(7, "x")
+            board.add_move(1, "x")
+            board.add_move(1, "x")
+            board.add_move(1, "x")
+            board.add_move(1, "x")
+            board.add_move(1, "x")
+            board.add_move(1, "x")
+            board.add_move(1, "x")
+            board.add_move(7, "x")
+            board.add_move(3, "x")
+            expect(board.board_state).to eq([["x", " ", " ", " ", " ", " ", " "],
+                                            ["x", " ", " ", " ", " ", " ", " "],
+                                            ["x", " ", " ", " ", " ", " ", " "],
+                                            ["x", " ", " ", " ", " ", " ", " "],
+                                            ["x", " ", " ", " ", " ", " ", "x"],
+                                            ["x", " ", "x", " ", " ", " ", "x"]])
         end
     end
 end
