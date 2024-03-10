@@ -31,4 +31,9 @@ class Board
         end
         nil
     end
+
+    def add_move(column, symbol)
+        row = column_empty?(column) ? 5 : first_empty_slot(column)
+        board[row][column] = symbol
+    end
 end

@@ -16,12 +16,23 @@ RSpec.describe Game do
                                                 [" ", " ", " ", " ", " ", " ", " "],
                                                 [" ", " ", " ", " ", " ", " ", " "]])
         end
+    end
 
+    describe "#player" do 
         it "initializes player1" do
-            game = Game.new
-            player1 = game.player1
+            player1 = Player.new('player1', '●'.green)
             expect(player1.name).to eq('player1')
             expect(player1.symbol).to eq('●'.green)
         end
+
+         
+        it "initializes player2" do
+            player2 = Player.new('player2', '●'.magenta)
+            expect(player2.name).to eq('player2')
+            expect(player2.symbol).to eq('●'.magenta)
+        end
+    end
+
+    describe "#gameplay" do
     end
 end
