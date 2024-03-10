@@ -1,5 +1,5 @@
 class Board 
-    attr_reader :board
+    attr_accessor :board
 
     def initialize
         @board = Array.new(6) { Array.new(7, ' ') }
@@ -20,4 +20,15 @@ class Board
         puts
     end
 
+
+    def column_empty?(column) 
+        @board.all? { |row| row[column - 1] == ' ' }
+    end
+
+    def first_empty_slot(column)
+        @board.reverse_each.with_index do |row, index|
+            return (@board.length - 1 - index) if row[column - 1] == ' '
+        end
+        nil
+    end
 end
