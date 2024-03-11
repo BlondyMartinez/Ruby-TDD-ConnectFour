@@ -36,4 +36,43 @@ class Board
         row = column_empty?(column) ? 5 : first_empty_slot(column)
         @board[row][column - 1] = symbol if row
     end
+
+    def winning_combinations
+        rows = @board.length
+        columns = @board[0].length
+        winning_length = 4 
+      
+        row_indices = (0...rows).to_a
+        column_indices = (0...columns).to_a
+      
+        horizontal = row_indices.flat_map do |row|
+            column_indices.each_cons(winning_length).map { |column_chunk| column_chunk.map { |col| [row, col] } }
+        end
+      
+        vertical = column_indices.flat_map do |column|
+            row_indices.each_cons(winning_length).map { |row_chunk| row_chunk.map { |r| [r, column] } }
+        end
+      
+        diagonal1 = (0...rows - winning_length + 1).flat_map do |row|
+            (0...columns - winning_length + 1).map do |column|
+                winning_length.times.map { |i| [row + i, column + i] }
+            end
+        end
+      
+        diagonal2 = (0...rows - winning_length + 1).flat_map do |row|
+            (0...columns - winning_length + 1).map do |column|
+                winning_length.times.map { |i| [row + i, column + winning_length - 1 - i] }
+            end
+        end
+      
+        horizontal + vertical + diagonal1 + diagonal2
+    end
+
+    def check_winner(symbol)
+        winning_combinations.each do |combination|
+            symbols = combination.map { |row, col| @board[row][col] }
+            return true if symbols.uniq.length == 1 && symbols.first == symbol
+        end
+        false
+    end
 end

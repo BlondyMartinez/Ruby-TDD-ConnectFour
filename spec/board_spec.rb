@@ -39,7 +39,7 @@ describe "Board" do
         end
     end
 
-    describe "#board_modification" do
+    describe "#modification" do
         it "play on empty board" do
             board = Board.new
             board.add_move(7, "x")
@@ -69,6 +69,56 @@ describe "Board" do
                                             ["x", " ", " ", " ", " ", " ", " "],
                                             ["x", " ", " ", " ", " ", " ", "x"],
                                             ["x", " ", "x", " ", " ", " ", "x"]])
+        end
+    end
+
+    describe "#win" do
+        it "vertical winning combo returns true" do
+            board = Board.new
+            board.board = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", " ", "x", " ", " ", " "]]
+
+            board.check_winner('x');
+        end
+
+        it "horizontal winning combo returns true" do
+            board = Board.new
+            board.board = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", "x", "x", "x", "x", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "]]
+
+            board.check_winner('x');
+        end
+
+        it "diagonal winning combo returns true" do
+            board = Board.new
+            board.board = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", "x", " "],
+                        [" ", " ", "x", "x", "x", "", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", "x", "x", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "]]
+
+            board.check_winner('x');
+        end
+
+        it "diagonal winning combo returns true" do
+            board = Board.new
+            board.board = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", "x", " ", " ", " ", " ", " "],
+                        [" ", " ", "x", "x", " ", "", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", "x", "x", "x", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "]]
+
+            board.check_winner('x');
         end
     end
 end
