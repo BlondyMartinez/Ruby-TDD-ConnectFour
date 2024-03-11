@@ -32,7 +32,4 @@ RSpec.describe Game do
             expect(player2.symbol).to eq('●'.magenta)
         end
     end
-
-    describe "#gameplay" do
-    end
 end
