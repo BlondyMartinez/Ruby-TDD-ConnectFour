@@ -26,8 +26,8 @@ class Board
     end
 
     def column_full?(column)
-        @board.none? { |row| row[column - 1] == ' ' } if (1...7).include?(column)
-        false
+        return false unless (1..7).include?(column)
+        @board.none? { |row| row[column - 1] == ' ' } 
     end
 
     def board_full?
