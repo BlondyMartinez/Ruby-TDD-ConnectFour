@@ -26,7 +26,12 @@ class Board
     end
 
     def column_full?(column)
-        @board.none? { |row| row[column - 1] == ' ' }
+        @board.none? { |row| row[column - 1] == ' ' } if (1...7).include?(column)
+        false
+    end
+
+    def board_full?
+        @board.flatten.none? { |slot| slot == ' ' }
     end
 
     def first_empty_slot(column)
