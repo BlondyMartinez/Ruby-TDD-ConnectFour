@@ -94,31 +94,44 @@ describe "Board" do
                         [" ", " ", " ", "x", " ", " ", " "],
                         [" ", " ", " ", " ", " ", " ", " "]]
 
-            board.check_winner('x');
+            expect(board.check_winner('x')).to eq(true)
         end
 
         it "diagonal winning combo returns true" do
             board = Board.new
             board.board = [[" ", " ", " ", " ", " ", " ", " "],
                         [" ", " ", " ", " ", " ", "x", " "],
-                        [" ", " ", "x", "x", "x", "", " "],
+                        [" ", " ", "x", "x", "x", " ", " "],
                         [" ", " ", " ", "x", " ", " ", " "],
                         [" ", " ", "x", "x", " ", " ", " "],
                         [" ", " ", " ", " ", " ", " ", " "]]
 
-            board.check_winner('x');
+
+            expect(board.check_winner('x')).to eq(true)
         end
 
         it "diagonal winning combo returns true" do
             board = Board.new
             board.board = [[" ", " ", " ", " ", " ", " ", " "],
                         [" ", "x", " ", " ", " ", " ", " "],
+                        [" ", " ", "x", "x", " ", " ", " "],
+                        [" ", " ", " ", "x", " ", " ", " "],
+                        [" ", " ", "x", "x", "x", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "]]
+
+            expect(board.check_winner('x')).to eq(true)
+        end
+
+        it "diagonal winning combo returns true" do
+            board = Board.new
+            board.board = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
                         [" ", " ", "x", "x", " ", "", " "],
                         [" ", " ", " ", "x", " ", " ", " "],
                         [" ", " ", "x", "x", "x", " ", " "],
                         [" ", " ", " ", " ", " ", " ", " "]]
 
-            board.check_winner('x');
+            expect(board.check_winner('x')).to eq(false)
         end
     end
 end
