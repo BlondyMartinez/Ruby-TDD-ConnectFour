@@ -23,6 +23,19 @@ describe "Board" do
             expect(board.column_empty?(4)).to eq(false)
         end
 
+        it "the column is full" do
+            board = Board.new
+            board.board = [[" ", " ", " ", " ", " ", " ", "x"],
+                        [" ", " ", " ", " ", " ", " ", "x"],
+                        [" ", " ", " ", " ", " ", " ", "x"],
+                        [" ", " ", " ", " ", " ", " ", "x"],
+                        [" ", " ", " ", " ", " ", " ", "x"],
+                        [" ", " ", " ", "x", " ", " ", "x"]]
+            
+            expect(board.column_full?(7)).to eq(true)
+            expect(board.column_empty?(4)).to eq(false)
+        end
+
         it "the column isnt empty" do
             board = Board.new
             board.board = [["x", " ", " ", " ", " ", " ", " "],

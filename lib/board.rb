@@ -25,6 +25,10 @@ class Board
         @board.all? { |row| row[column - 1] == ' ' }
     end
 
+    def column_full?(column)
+        @board.none? { |row| row[column - 1] == ' ' }
+    end
+
     def first_empty_slot(column)
         @board.reverse_each.with_index do |row, index|
             return (@board.length - 1 - index) if row[column - 1] == ' '
