@@ -26,7 +26,7 @@ Follow the on-screen instructions to play the game. Enter a number between 1 and
 This project uses RSpec for testing. To run the tests, execute the following command:
 
 ```bash
-rspec
+rspec spec/board_spec.rb
 ```
 
 ## Screenshot 📷
